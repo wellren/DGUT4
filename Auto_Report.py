@@ -1,4 +1,3 @@
-from re import S
 from gevent import monkey;monkey.patch_all()
 import click
 from dgut_requests.dgut import dgutIllness, requests
@@ -11,22 +10,21 @@ import sys
 def clock(u: dgutIllness, key: str=None) -> None:
     '''
     打卡并输出结果
-    :param u: dgutIllness, 指定打卡的dgutIllness对象.
-    :param location: list | None, 指定打卡的定位（经纬度列表类型）或缺省None.
+    :param u: dgutIllness, 指定打卡的dgutIllness对象
+    :param key: str | None, 指定Server酱的key
     :returns: None，打印结果
     '''
     result = u.report().get("message")
     print(u.username[-2:], '-', result) 
-    if key:
+    if key and not "今日已打卡" in result:
         headers = {
             'Content-type': "application/x-www-form-urlencoded"
         }
         data = {
-            "text": u.username + "打卡成功",
-            "desp": result
+            "title": u.username + result[1:],
         }
         res = requests.post(f'https://sctapi.ftqq.com/{key}.send', data=data, headers=headers)
-        if res.status_code == 200:
+        if res.status_code == 200 and res.json().get("code") == 0:
             print(u.username[-2:]+"推送成功")
 
 
