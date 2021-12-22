@@ -1,7 +1,7 @@
 # 东莞理工疫情自动打卡助手
 
 ### 使用方法
-设置好Secrets即可。设置方法[点击这里](https://gitee.com/bertramoon/dgut-autoreport-configure)。有多个账号的话，以","分隔开，如设置USERNAME为"2018001,2018002"，PASSWORD为"123456,7891011",SERVER_KEY为"SCT105680T2xabydNVRuTkcMm7PKQgWaJE,SCT105696T3sabwdNBRuTkcMm7XQSgNsCD"。
+设置好Secrets即可。设置方法[点击这里](https://gitee.com/bertramoon/dgut-autoreport-configure)。有多个账号的话，以","分隔开，如设置USERNAME为"2018001,2018002"，PASSWORD为"123456,7891011",SERVER_KEY为"-K SCT105680T2xabydNVRuTkcMm7PKQgWaJE,SCT105696T3sabwdNBRuTkcMm7XQSgNsCD"。
 
 
 ### 更新日志
