@@ -2,7 +2,7 @@
 name: AA自动同步🔄🔄
 on:
   schedule:
-    - cron: '0 4 */2 * *' #每两天同步一次
+    - cron: '0 4 */3 * *' #每三天同步一次
   workflow_dispatch:
   watch:
     types: started
