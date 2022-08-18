@@ -1,19 +1,36 @@
 # 东莞理工疫情自动打卡助手
 
 ### 前言
-做这个脚本的初心是帮助经常忘记打卡的同学避免断卡。但还是要提醒一下大家，请按需使用，切勿滥用。同时，因为提交的是上一次的表单，所以大家每次离校和返校记得当天十二点去更正自己的表单，保证最新最准确的数据。
+做这个脚本的初心是帮助经常忘记打卡的同学避免断卡。但还是要提醒一下大家，请按需使用，切勿滥用。同时，因为提交的是上一次的表单，所以大家每次离校和返校记得当天十二点之后进行一次手动打卡更新自己的表单，保证最新最准确的数据。
 
 
 ### 使用方法
-设置好Secrets即可。设置方法[点击这里](https://gitee.com/bertramoon/dgut-autoreport-configure)。有多个账号的话，以","分隔开，如设置USERNAME为"2018001,2018002"，PASSWORD为"123456,7891011",SERVER_KEY为"-K SCT105680T2xabydNVRuTkcMm7PKQgWaJE,SCT105696T3sabwdNBRuTkcMm7XQSgNsCD"。
+设置好Secrets即可。详细设置方法[点击这里](https://gitee.com/bertramoon/dgut-autoreport-configure)。下面给出简易的设置方法：
+
+首先我们进入`Settings->Secrets->Actions`
+
+![点击secrets](https://gitee.com/bertramoon/img/raw/master/Auto_Report/%E8%AE%BE%E7%BD%AEsecrets.png)
+
+
+然后设置好相应的secrets即可。例如账号是2018001，密码是123456，只需要设置好USERNAME为2018001，PASSWORD为123456即可。
+
+![设置secrets](https://img-blog.csdnimg.cn/706476d5d770472c8aa472383602cce6.png)
+
+设置完成后启动GitHub Action工作流：
+
+![进入Action](https://img-blog.csdnimg.cn/829ab2c53b0d49bf95daa68fe5f5d0b2.png)
+
+![开启Action](https://img-blog.csdnimg.cn/9a243b9d9d4c420d9a1039872f87c64e.png)
+
+这样就配置好了。如果需要微信通知的话，[请点击这里](https://gitee.com/bertramoon/dgut-autoreport-configure)查看更详细的教程
 
 > 如果需要实现fork该仓库后可以自动拉取更新最新版的话，[点击这里](https://gitee.com/miranda0111/JDscret/blob/main/backup/reposync.md#%E7%94%B3%E8%AF%B7pat)申请并配置好PAT
 
 
 ### 更新日志
 
-#### 2022-1-19
-- 解决https连接失败问题：openssl版本问题导致与学校服务器连接不上，修改预装版本为`ubuntu-18.04`从而降低openssl版本并成功连接
+#### 2022-8-18
+- 更新README.md，增加简易使用方法，详细的方法则参考https://gitee.com/bertramoon/dgut-autoreport-configure
 
 #### 2021-12-24
 - 更新README.md内容
