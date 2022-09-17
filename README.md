@@ -29,6 +29,9 @@
 
 ### 更新日志
 
+#### 2022-9-18
+- 由于学校系统的健康状况和每日体温云端数据每日一刷新，因此将其提取为配置项。需要更新到最新版才能正常打卡，请周知。特别鸣谢[drpasserby](https://github.com/drpasserby )和[IceWindy233](https://github.com/IceWindy233 )两位小伙伴的帮助
+
 #### 2022-8-18
 - 更新README.md，增加简易使用方法，详细的方法则参考https://gitee.com/bertramoon/dgut-autoreport-configure
 
