@@ -5,7 +5,24 @@
 
 
 ### 使用方法
-设置好Secrets即可。详细设置方法[点击这里](https://gitee.com/bertramoon/dgut-autoreport-configure)。下面给出简易的设置方法：
+#### 设置身体状况、体温、是否在校内
+打开`custom_data.json`文件，可以看到有3个字段：
+```json
+{
+    "body_temperature": 36.6,
+    "health_situation": 1,
+    "is_in_school": 1
+}
+```
+
+- body_temperature: 体温，自行填写，一般是36.5-37.0。也可以默认
+- health_situation: 身体状况，默认1，表示良好。2-11表示不同身体问题
+- is_in_school: 1表示在松山湖校区，2表示在莞城校区，3表示不在学校，也是自行填写
+
+
+#### 设置Secrets
+
+详细设置方法[点击这里](https://gitee.com/bertramoon/dgut-autoreport-configure)。下面给出简易的设置方法：
 
 首先我们进入`Settings->Secrets->Actions`
 
@@ -28,6 +45,9 @@
 
 
 ### 更新日志
+
+#### 2022-10-5
+- 配置项custom_data.json增加是否在校。同时dgut-requests库更新，可以正常使用了
 
 #### 2022-9-18
 - 由于学校系统的健康状况和每日体温云端数据每日一刷新，因此将其提取为配置项。需要更新到最新版才能正常打卡，请周知。特别鸣谢[drpasserby](https://github.com/drpasserby )和[IceWindy233](https://github.com/IceWindy233 )两位小伙伴的帮助
