@@ -1,5 +1,12 @@
 # 东莞理工疫情自动打卡助手
 
+### 贡献者名单
+按首次参与项目的时间顺序排序
+- [Bertramoon](https://github.com/Bertramoon )
+- [miranda0111](https://github.com/miranda0111 )
+- [drpasserby](https://github.com/drpasserby )
+- [IceWindy233](https://github.com/IceWindy233 )
+
 ### 前言
 做这个脚本的初心是帮助经常忘记打卡的同学避免断卡。但还是要提醒一下大家，请按需使用，切勿滥用。同时，因为提交的是上一次的表单，所以大家每次离校和返校记得当天十二点之后进行一次手动打卡更新自己的表单，保证最新最准确的数据。
 
@@ -45,6 +52,9 @@
 
 
 ### 更新日志
+
+#### 2022-10-5
+- 增加贡献者名单
 
 #### 2022-10-5
 - 配置项custom_data.json增加是否在校。同时dgut-requests库更新，可以正常使用了
