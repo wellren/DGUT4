@@ -9,26 +9,39 @@ from dgut_requests import DgutIllness
 from retry import retry
 
 
+# 环境变量自定义数据
+ENV_CUSTOM_DATA = {
+    "body_temperature": os.getenv("BODY_TEMPERATURE"),
+    "health_situation": os.getenv("HEALTH_SITUATION"),
+    "is_in_school": os.getenv("IS_IN_SCHOOL")
+}
+# 用户自定义数据文件
 CUSTOM_DATA_FILENAME = "custom_data.json"
+# 默认配置
 DEFAULT_CUSTOM_DATA = {
-    "body_temperature": 36.5,
+    "body_temperature": "36.5",
     "health_situation": 1,
     "is_in_school": 1
 }
 
 
-def get_custom_data(filename: str) -> dict:
+def get_custom_data(filename: str = None) -> dict:
     """
     获取配置信息
 
     :param filename: 配置文件名
     :return: dict
     """
-    # 文件不存在，返回默认配置
-    if not os.path.exists(filename):
+    # 如果环境变量配置全部自定义，返回自定义配置
+    if all(ENV_CUSTOM_DATA.values()):
+        return {
+            key: int(value) if key != "body_temperature" else value
+            for key, value in ENV_CUSTOM_DATA.items()
+        }
+    # 未指定自定义文件或自定义文件不存在，返回默认配置
+    if filename is None or not os.path.exists(filename):
         return DEFAULT_CUSTOM_DATA
-    
-    # 读取文件配置
+    # 自定义文件存在，读取文件配置
     with open(filename, encoding='utf-8') as f:
         config = json.load(f)
         for key in DEFAULT_CUSTOM_DATA.keys():
@@ -38,7 +51,7 @@ def get_custom_data(filename: str) -> dict:
     return config
 
 
-@retry(tries=20, delay=2, backoff=3, max_delay=60)
+@retry(tries=5, delay=300, jitter=120, max_delay=900)
 def clock(u: DgutIllness, custom_data: dict = None, key: str = None) -> None:
     """
     打卡并输出结果

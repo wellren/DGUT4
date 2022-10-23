@@ -12,22 +12,7 @@
 
 
 ### 使用方法
-#### 设置身体状况、体温、是否在校内
-打开`custom_data.json`文件，可以看到有3个字段：
-```json
-{
-    "body_temperature": 36.6,
-    "health_situation": 1,
-    "is_in_school": 1
-}
-```
-
-- body_temperature: 体温，自行填写，一般是36.5-37.0。也可以默认
-- health_situation: 身体状况，默认1，表示良好。2-11表示不同身体问题
-- is_in_school: 1表示在松山湖校区，2表示在莞城校区，3表示不在学校，也是自行填写
-
-
-#### 设置Secrets
+#### 设置环境变量Secrets，配置好账号密码等信息
 
 详细设置方法[点击这里](https://gitee.com/bertramoon/dgut-autoreport-configure)。下面给出简易的设置方法：
 
@@ -51,7 +36,38 @@
 > 如果需要实现fork该仓库后可以自动拉取更新最新版的话，[点击这里](https://gitee.com/miranda0111/JDscret/blob/main/backup/reposync.md#%E7%94%B3%E8%AF%B7pat)申请并配置好PAT
 
 
+#### 设置身体状况、体温、是否在校内
+
+##### 方法一：修改配置文件
+
+打开`custom_data.json`文件，可以看到有3个字段：
+```json
+{
+    "body_temperature": 36.6,
+    "health_situation": 1,
+    "is_in_school": 1
+}
+```
+
+- body_temperature: 体温，自行填写，一般是36.5-37.0。也可以默认
+- health_situation: 身体状况，默认1，表示良好。2-11表示不同身体问题
+- is_in_school: 1表示在松山湖校区，2表示在莞城校区，3表示不在学校，也是自行填写
+
+##### 方法二：设置环境变量Secrets
+
+**如果设置了三天自动同步，强烈建议用这个方法**
+
+总共可以设置三个环境变量，且只有三个环境变量均设置了，才会使用环境变量的数据作为自定义数据：
+- BODY_TEMPERATURE：体温，一般是36.5-37.0
+- HEALTH_SITUATION：身体状况，1表示良好
+- IS_IN_SCHOOL：1表示在松山湖校区，2表示在莞城校区，3表示不在学校
+
+
 ### 更新日志
+
+#### 2022-10-23
+- 减少重试次数和增加重试间隔，避免账号被误封
+- 增加通过环境变量设置自定义数据的方法
 
 #### 2022-10-5
 - 增加贡献者名单
